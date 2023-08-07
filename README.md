@@ -49,6 +49,7 @@ Given a CNVR, simultaneously detect CNVs for each sample and  estimate the CNV-d
 CNVR.res<-Known.region.test(position   = example.data$position,
                             signal.mat = example.data$example.lrr,
                             phenotype  = example.data$clinic.info$disease,
+                            phenotype.type  = "binary",
                             dt.nCNV    = 1,
                             label.initial = "GMM",
                             Dim.reduction = "PCA",
