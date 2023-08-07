@@ -67,7 +67,7 @@ PCA plot with each sample labeled with identified CNV
 ```
 OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
 ```
-![cluster plot]()
+![cluster plot](https://github.com/FeifeiXiao-lab/OSCAA/blob/7f49784e3d1eb397a1cf96c1c255b94f1d6e9f92/data/cluster.plot.png)
 
 
 
