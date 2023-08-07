@@ -351,7 +351,7 @@ OSA.2D.ECM<-function(
   
   repeat{
     num_iter<-num_iter+1
-    print(paste0("iteration=",num_iter))
+    # print(paste0("iteration=",num_iter))
     # -------------------------------------------------------------------------------------- #
     # -------------------------------------------------------------------------------------- #
     # M STEP
@@ -586,7 +586,7 @@ Known.region.test<-function(position,
   k<-1
   # h<-1
   for (h in 1:nrow(position)) {
-    print(h)
+    print(paste0("Analyzing # ",h, "CNV"))
     if (smooth){
       tmp.signal.mat.pre<-signal.mat[,position[h,1]:position[h,2]]
       tmp.signal.mat<-modSaRa::smooth(tmp.signal.mat.pre)
