@@ -43,7 +43,7 @@ head(example.data$clinic.info[,c("age","Gender.char")])
 712  32.79726           M
 ```
 
-## Fit gaussian mixture model for this CNVR
+## Fit gaussian mixture model for this CNVR using OSCAA
 Given a CNVR, simultaneously detect CNVs for each sample and  estimate the CNV-disease association adjusting age and sex. Assume only deletions of CNVs are associated with disease risk.
 ```
 CNVR.res<-Known.region.test(position   = example.data$position,
