@@ -24,4 +24,4 @@ OSCAA.plot<-function(OSA.PCA.res){
 }
 
 
-OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
+# OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
