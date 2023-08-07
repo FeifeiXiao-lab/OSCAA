@@ -20,4 +20,56 @@ data(exmaple.data)
 dim(example.data$example.lrr)
 [1] 2829   15
 example.data$position
+start end
+1     15
+
+example.data$example.lrr[1:6,1:6]
+                                17853        80996      6145       6146       733221     6147
+X4787234217_R01C01.Log.R.Ratio  0.182890500  0.1213354  0.2504343  0.1104460  0.1308962  0.1118831
+X4787234217_R02C01.Log.R.Ratio -0.299842900 -0.3343200 -0.3939640 -0.5059705 -0.2845776 -0.1981067
+X4787234217_R03C01.Log.R.Ratio  0.009729712 -0.1223645  0.1303647  0.1416307 -0.1090477  0.1928931
+X4784244200_R01C01.Log.R.Ratio -0.423113000 -0.4317191 -0.5583948 -0.7634997 -0.5352160 -0.1343689
+X4784244200_R02C01.Log.R.Ratio -0.249242800 -0.4356031 -0.2522257 -0.2990728 -0.1104633 -0.1861957
+X4784244200_R03C01.Log.R.Ratio -0.211350600 -0.5990200 -0.4808382 -0.7339458 -0.3549831 -0.1585388
+
+head(example.data$clinic.info[,c("age","Gender.char")])
+     age                Gender.char
+2671 50.85753           M
+2410 52.87671           M
+1400 69.00000           M
+1158 53.00000           M
+1987 58.32055           F
+712  32.79726           M
 ```
+
+## fit gaussian mixture model for this CNVR
+Given a CNVR, simultaneously detect CNVs for each sample and  estimate the CNV-disease association adjusting age and sex.
+```
+CNVR.res<-Known.region.test(position   = example.data$position,
+                            signal.mat = example.data$example.lrr,
+                            phenotype  = example.data$clinic.info$disease,
+                            dt.nCNV    = 1,
+                            label.initial = "GMM",
+                            Dim.reduction = "PCA",
+                            assumption    = "deletion",
+                            max.clusters  = 5,
+                            covariates    = example.data$clinic.info[,c("Gender","age")],
+                            covariates.signal.names = c("Gender"),
+                            covariates.pheno.names  = c("Gender","age"),
+                            overall.alpha=0.05,
+                            applyldf = FALSE,
+                            smooth   = FALSE,
+                            max.iter = 100,
+                            tol      = 0.01)
+```
+## cluster plot
+PCA plot with each sample labeled with identified CNV
+```
+OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
+```
+![cluster plot]()
+
+
+
+
+
