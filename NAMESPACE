@@ -1,1 +1,9 @@
 exportPattern("^[[:alpha:]]+")
+
+export(OSCAA)
+import(ggplot2)
+import(emdbook)
+import(cluster)
+import(ClusterR) 
+import(factoextra)
+import(umap)
