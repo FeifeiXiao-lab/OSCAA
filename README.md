@@ -72,11 +72,17 @@ OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
 
 ## example of phenotype models
 Three hypotheses are provided in the phenotype model: Model 1 is fitted for the hypothesis of whether samples with abnormal copy number states are more/less likely to develop a disease.
+
 $$ Model 1: E(logit(y=1))= \beta_{0} + beta_{1} * is.CNV $$
+
 where y denotes the binary disease status while is.CNV = 1 for samples with a CNV and 0 otherwise. Model 2 is fitted for the hypothesis of whether sample with deletions of copy numbers are more/less likely to develop a disease.
+
 $$ Model 2: E(logit(y=1))= \beta_{0} + beta_{1} * is.deletion $$
+
 where is.deletion = 1 for samples with a deletions of copy numbers and 0 otherwise. Model 3 is fitted for the hypothesis of linear relationship between disease risk and copy number.
+
 $$ Model 3: E(logit(y=1))= \beta_{0} + beta_{1} * CN $$
+
 where CN represents the copy numbers.
 
 
