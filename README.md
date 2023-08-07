@@ -5,15 +5,16 @@ A Two-Dimensional Gaussian Mixture Model for Copy Number Variation Association A
 Xuanxuan Yu, Xizhi Luo, Guoshuai Cai, Feifei Xiao
 
 ## Description
-The One-Stage CNV-disease Association Analysis (OSCAA) method utilizes a two-dimensional GMM model to assess the association between CNV and disease risk in a known CNVR with a one-stage framework. The two-dimensional GMM model is factorized into a signal model, a phenotype model, and a copy number model. To better differentiate samples with different copy numbers, we model the joint distribution of the first two PCs for samples with the same copy number in the signal model. The phenotype model comprises a generalized linear model (GLM) or a logistic model fitted for continuous or binary phenotype measurements, respectively. In addition, the phenotype model offers two hypotheses: the hypothesis of linear relationship between disease risk and copy number, and the hypothesis of whether samples with abnormal copy number states are more likely to develop a disease. The copy number model estimates the proportion of each copy number state and enables the evaluation of the potential impact of covariates on the proportions. Although we demonstrate the model based on SNP array data, our method can be extended to sequencing data with appropriate data normalization procedures.
+The One-Stage CNV-disease Association Analysis (OSCAA) method utilizes a two-dimensional GMM model to assess the association between CNV and disease risk in a known CNVR with a one-stage framework. The two-dimensional GMM model is factorized into a signal model, a phenotype model, and a copy number model. To better differentiate samples with different copy numbers, we model the joint distribution of the first two PCs for samples with the same copy number in the signal model. The phenotype model comprises a generalized linear model (GLM) or a logistic model fitted for continuous or binary phenotype measurements, respectively. In addition, the phenotype model offers three hypotheses: the hypothesis of linear relationship between disease risk and copy number, the hypothesis of whether samples with abnormal copy number states are more/less likely to develop a disease, and the hypothesis of whether sample with deletions of copy numbers are more/less likely to develop a disease. The copy number model estimates the proportion of each copy number state and enables the evaluation of the potential impact of covariates on the proportions. Although we demonstrate the model based on SNP array data, our method can be extended to sequencing data with appropriate data normalization procedures.
 
-## install OSCAA
+
+## Install OSCAA
 ```
 library(devtools)
 install_github("....")
 ```
 
-# data
+# Data
 ```
 library("OSCAA")
 data(exmaple.data)
@@ -42,8 +43,8 @@ head(example.data$clinic.info[,c("age","Gender.char")])
 712  32.79726           M
 ```
 
-## fit gaussian mixture model for this CNVR
-Given a CNVR, simultaneously detect CNVs for each sample and  estimate the CNV-disease association adjusting age and sex.
+## Fit gaussian mixture model for this CNVR
+Given a CNVR, simultaneously detect CNVs for each sample and  estimate the CNV-disease association adjusting age and sex. Assume only deletions of CNVs are associated with disease risk.
 ```
 CNVR.res<-Known.region.test(position   = example.data$position,
                             signal.mat = example.data$example.lrr,
@@ -62,14 +63,20 @@ CNVR.res<-Known.region.test(position   = example.data$position,
                             max.iter = 100,
                             tol      = 0.01)
 ```
-## cluster plot
+## Cluster plot
 PCA plot with each sample labeled with identified CNV
 ```
 OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
 ```
 ![cluster plot](https://github.com/FeifeiXiao-lab/OSCAA/blob/7f49784e3d1eb397a1cf96c1c255b94f1d6e9f92/data/cluster.plot.png)
 
-
-
+## example of phenotype models
+Three hypotheses are provided in the phenotype model: Model 1 is fitted for the hypothesis of whether samples with abnormal copy number states are more/less likely to develop a disease.
+$$ Model 1: E(logit(y=1))= \beta_{0} + beta_{1} * is.CNV $$
+where y denotes the binary disease status while is.CNV = 1 for samples with a CNV and 0 otherwise. Model 2 is fitted for the hypothesis of whether sample with deletions of copy numbers are more/less likely to develop a disease.
+$$ Model 2: E(logit(y=1))= \beta_{0} + beta_{1} * is.deletion $$
+where is.deletion = 1 for samples with a deletions of copy numbers and 0 otherwise. Model 3 is fitted for the hypothesis of linear relationship between disease risk and copy number.
+$$ Model 3: E(logit(y=1))= \beta_{0} + beta_{1} * CN $$
+where CN represents the copy numbers.
 
 
