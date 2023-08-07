@@ -1,5 +1,5 @@
-library("ggplot2")
-library("gridExtra")
+#library("ggplot2")
+#library("gridExtra")
 # plot clusters based on 1st and 2nd PCs
 OSCAA.plot<-function(OSA.PCA.res){
   
