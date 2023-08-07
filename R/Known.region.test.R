@@ -348,7 +348,8 @@ OSA.2D.ECM<-function(
   num_iter      <- 0
   log.ll.int    <- log(0)
   alpha.int      <- rep(1/nCNV,nCNV)
-  
+
+  options(warn = -1)
   repeat{
     num_iter<-num_iter+1
     # print(paste0("iteration=",num_iter))
@@ -498,7 +499,8 @@ OSA.2D.ECM<-function(
     }
     
   }
-  
+
+  options(warn = 0)
   # ========================================================================= #
   # to see the dominant CN in this probe
   center.dat1<-center.dat1[order(center.dat1$cluster),]
