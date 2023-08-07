@@ -586,7 +586,7 @@ Known.region.test<-function(position,
   k<-1
   # h<-1
   for (h in 1:nrow(position)) {
-    print(paste0("Analyzing # ",h, "CNV"))
+    print(paste0("Analyzing # ",h, " CNV"))
     if (smooth){
       tmp.signal.mat.pre<-signal.mat[,position[h,1]:position[h,2]]
       tmp.signal.mat<-modSaRa::smooth(tmp.signal.mat.pre)
