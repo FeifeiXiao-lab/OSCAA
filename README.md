@@ -68,7 +68,8 @@ PCA plot with each sample labeled with identified CNV
 ```
 OSCAA.plot(OSA.PCA.res=CNVR.res[["sig.CNR.test"]][[1]])
 ```
-![cluster plot](https://github.com/FeifeiXiao-lab/OSCAA/blob/7f49784e3d1eb397a1cf96c1c255b94f1d6e9f92/data/cluster.plot.png)
+
+![cluster plot](https://github.com/FeifeiXiao-lab/OSCAA/blob/ee2bf75802f9dc013781ec3ef212ba040dc8e30a/image/cluster.plot.png)
 
 ## Example of phenotype models
 Three hypotheses are provided in the phenotype model: Model 1 is fitted for the hypothesis of whether samples with abnormal copy number states are more/less likely to develop a disease.
