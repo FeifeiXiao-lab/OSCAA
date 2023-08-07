@@ -1,9 +1,9 @@
-library("emdbook") #dmvnorm function
-library("cluster")
-library("factoextra")
-library("Rcpp")
-library("ClusterR")
-library("umap")
+# library("emdbook") #dmvnorm function
+# library("cluster")
+# library("factoextra")
+# library("Rcpp")
+# library("ClusterR")
+# library("umap")
 
 # create dummy variables for copy number states( apply Two-Dimensional GMM with first two PCs)
 dummy.var<-function(s.vec,nCNV){
