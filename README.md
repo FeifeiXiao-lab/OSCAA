@@ -11,7 +11,7 @@ The One-Stage CNV-disease Association Analysis (OSCAA) method utilizes a two-dim
 ## Install OSCAA
 ```
 library(devtools)
-install_github("....")
+install_github("FeifeiXiao-lab/OSCAA")
 ```
 
 # Data
