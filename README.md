@@ -15,6 +15,7 @@ install_github("FeifeiXiao-lab/OSCAA")
 ```
 
 # Data
+The input data for OSCAA is normalized and normally distributed signal intensities with biases removed.
 ```
 library("OSCAA")
 data(exmaple.data)
